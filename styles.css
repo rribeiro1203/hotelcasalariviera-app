@@ -1,0 +1,89 @@
+body {
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    top: 56px; /* altura navbar */
+    left: 0;
+    background-color: #212529;
+    padding-top: 1rem;
+    z-index: 1050; /* 🔑 CLAVE */
+}
+.sidebar a {
+    color: #adb5bd;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sidebar a:hover {
+    background-color: #d8e0f4;
+    color: #fff;
+}
+.sidebar a.active {
+    background-color: #495057;
+    color: #fff;
+}
+
+.sidebar-open::before {
+    content: "";
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 1040;
+}
+
+/* Sidebar móvil */
+@media (max-width: 991.98px) {
+.sidebar {
+    left: -280px;
+    transition: left 0.3s ease;
+}
+.sidebar-open .sidebar {
+    left: 0;
+}
+}
+@media (min-width: 992px) {
+.content {
+    margin-left: 280px;
+}
+}
+
+/* Contenido */
+.content {
+    margin-top: 56px;
+    padding: 20px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+/* Room Cards */
+.room-card {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.room-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.room-free {
+    background-color: #ffffff; /*#e6f4ea;*/
+    border-left: 6px solid #198754;
+}
+.room-occupied {
+    background-color: #fdecea;
+    border-left: 6px solid #dc3545;
+}
+.room-number {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
