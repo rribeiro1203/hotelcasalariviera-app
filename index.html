@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Casa La Riviera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- 🔄 LOADER -->
+  <div id="appLoader" class="app-loader">
+    <div class="loader-content">
+      <div class="spinner-border text-light" role="status"></div>
+      <div class="loader-text">Cargando...</div>
+    </div>
+  </div>
+
+  <!-- 🚀 APP -->
+  <div id="appContent" class="app-hidden">
+    <!-- 🔹 NAVBAR -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <!-- ☰ BOTÓN HAMBURGUESA (solo móvil) -->
+        <button
+          class="btn btn-dark navbar-toggler d-lg-none"
+          type="button"
+          id="menuToggle"
+          onclick="document.body.classList.toggle('sidebar-open')">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand ms-2">
+          Hotel Casa La Riviera
+        </span>
+      </div>
+    </nav>
+
+    <!-- 🔹 SIDEBAR -->
+    <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar">
+      <div class="sidebar-menu">
+          <ul class="nav nav-pills flex-column mb-auto"> 
+          <li class="nav-item">
+              <a href="#" class="nav-link active" aria-current="page" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-door-open me-2"></i> Habitaciones       </a> 
+          </li> 
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-calendar-check me-2"></i>    Reservas           </a>
+          </li> 
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-cash-stack me-2"></i>        Ingresos Hotel     </a> 
+          </li> 
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-receipt me-2"></i>           Gastos Hotel       </a> 
+          </li> 
+          <hr class="text-secondary mx-3">
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-cup-straw me-2"></i>         Ingresos Minibar   </a> 
+          </li>
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-receipt me-2"></i>           Gastos Minibar     </a> 
+          </li> 
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-box-seam me-2"></i>          Inventario Minibar </a> 
+          </li>
+          <hr class="text-secondary mx-3">
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-globe me-2"></i>             Extranjeros        </a> 
+          </li>
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-building me-2"></i>          Empresas           </a> 
+          </li>
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-airplane me-2"></i>          Expedia            </a> 
+          </li>
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-people me-2"></i>            Empleados          </a> 
+          </li>
+          <li> 
+              <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-graph-up me-2"></i>          Reportes           </a> 
+          </li>
+          </ul> 
+      </div>
+      <!-- USER PROFILE -->
+      <div class="dropdown"> 
+          <a href="#" class="d-flex align-items-center w-100 text-decoration-none dropdown-toggle sidebar-user-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
+              <div class="d-flex align-items-center flex-grow-1">
+                  <div class="avatar me-2" id="userAvatar"></div>
+                  <div class="user-info">
+                      <div class="user-name" id="userName"></div>
+                      <div class="user-role" id="userRole"></div>
+                  </div>
+              </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" data-popper-placement="top-start" 
+              style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(0px, -34px, 0px);"> 
+              <li><a class="dropdown-item" href="#" onclick="abrirPerfil()"><i class="bi bi-person-circle me-2"></i> Mi perfil</a></li>
+              <!--<li><hr class="dropdown-divider"></li>-->
+              <li><a class="dropdown-item" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión</a></li>
+          </ul> 
+      </div>
+    </div>
+
+    <!-- 🔹 CONTENIDO -->
+    <main class="content">
+      <h2 class="mb-4">Habitaciones</h2>
+
+      <!-- HABITACIONES DEL PRIMER PISO -->
+      <h5 class="mb-4">Primer piso</h5>
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <!-- UNA HABITACIÓN -->
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(101)">
+            <div class="card-body text-center">
+              <div class="room-number">101</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(102)">
+            <div class="card-body text-center">
+              <div class="room-number">102</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(103)">
+            <div class="card-body text-center">
+              <div class="room-number">103</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(104)">
+            <div class="card-body text-center">
+              <div class="room-number">104</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(105)">
+            <div class="card-body text-center">
+              <div class="room-number">105</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(106)">
+            <div class="card-body text-center">
+              <div class="room-number">106</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(107)">
+            <div class="card-body text-center">
+              <div class="room-number">107</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(108)">
+            <div class="card-body text-center">
+              <div class="room-number">108</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(109)">
+            <div class="card-body text-center">
+              <div class="room-number">109</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <!-- HABITACIONES DEL SEGUNDO PISO -->
+      <h5 class="mb-4">Segundo piso</h5>
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(201)">
+            <div class="card-body text-center">
+              <div class="room-number">201</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(202)">
+            <div class="card-body text-center">
+              <div class="room-number">202</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(203)">
+            <div class="card-body text-center">
+              <div class="room-number">203</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(204)">
+            <div class="card-body text-center">
+              <div class="room-number">204</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(205)">
+            <div class="card-body text-center">
+              <div class="room-number">205</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(206)">
+            <div class="card-body text-center">
+              <div class="room-number">206</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(207)">
+            <div class="card-body text-center">
+              <div class="room-number">207</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-free" onclick="openRoom(208)">
+            <div class="card-body text-center">
+              <div class="room-number">208</div>
+              <small class="text-muted">Disponible</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card room-card room-occupied" onclick="openRoom(209)">
+            <div class="card-body text-center">
+              <div class="room-number">209</div>
+              <small class="text-muted">Ocupada</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main> 
+  </div>
+
+  <!-- 🔹 MODAL: MI PERFIL -->
+  <div class="modal fade" id="perfilModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <!-- Header -->
+        <div class="modal-header">
+          <h5 class="modal-title">Mi perfil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+
+          <!-- Tabs -->
+          <ul class="nav nav-tabs mb-3">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-datos">
+                Datos
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-seguridad">
+                Seguridad
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+
+            <!-- 🔹 TAB DATOS -->
+            <div class="tab-pane fade show active pt-3 pb-5" id="tab-datos">
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label class="form-label">Nombre completo</label>
+                  <input type="text" class="form-control" id="perfilNombre" disabled>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Cargo</label>
+                  <input type="text" class="form-control" id="perfilCargo" disabled>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Tipo de documento</label>
+                  <input type="text" class="form-control" id="perfilTipoDoc" disabled>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Número de documento</label>
+                  <input type="text" class="form-control" id="perfilNumDoc" disabled>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 🔹 TAB SEGURIDAD -->
+            <div class="tab-pane fade" id="tab-seguridad">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">Nueva contraseña</label>
+                  <div class="position-relative">
+                    <input type="password" class="form-control" id="newPassword">
+                    <button type="button" class="btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-2"
+                            onclick="togglePassword('newPassword', this)">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Confirmar contraseña</label>
+                  <div class="position-relative">
+                    <input type="password" class="form-control" id="confirmPassword">
+                    <button type="button" class="btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-2"
+                            onclick="togglePassword('confirmPassword', this)">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12 text-end pt-1">
+                    <button class="btn btn-primary" onclick="cambiarPassword()"> Cambiar contraseña </button>
+                </div>
+                <div class="col-12">
+                    <small id="passwordMsg" class="text-danger d-none"></small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <!-- Javascript -->
+  <script src="js/scripts.js"></script>
+
+</body>
+</html>
