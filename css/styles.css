@@ -1,6 +1,11 @@
 body {
     overflow-x: hidden;
 }
+/* Bloquea scroll del body cuando el sidebar menu está abierto */
+body.sidebar-open {
+    overflow: hidden;
+    touch-action: none;
+}
 
 /******* 🔄 Loader *******/
 .app-loader {
@@ -19,7 +24,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 .loader-text {
   margin-top: 10px;
   font-size: 0.95rem;
@@ -50,7 +54,15 @@ body {
     z-index: 1050;          /* 🔑 CLAVE PARA TRAERLO ARRIBA DEL CONTENIDO */
     display: flex;          /* 👈 CLAVE PARA EL USER PROFILE */
     flex-direction: column; /* 👈 CLAVE PARA EL USER PROFILE */
-    overflow: hidden;       /* 🔑 CLAVE PARA HACER SCROLL */
+    /* 🔑 CLAVE PARA HACER SCROLL */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+.sidebar-logo-img {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
 }
 .sidebar-menu {
   flex-grow: 1;
@@ -83,6 +95,16 @@ body {
     height: 100vh;
     background: rgba(0,0,0,0.4);
     z-index: 1040;
+}
+.sidebar-section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(158, 158, 158, 0.5); /* Color título sección sidebar menu */
+  margin: 16px 20px 8px;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Sidebar user */

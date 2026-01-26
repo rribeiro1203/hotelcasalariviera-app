@@ -116,6 +116,7 @@ document.addEventListener("click", function (e) {
 });
 
 //--- Abrir modal + cargar datos ---
+/*
 window.abrirPerfil = function () {
   const modal = new bootstrap.Modal(document.getElementById('perfilModal'))
   modal.show()
@@ -128,6 +129,31 @@ window.abrirPerfil = function () {
   document.getElementById('perfilTipoDoc').value = window.perfilUsuario.tipo_doc
   document.getElementById('perfilNumDoc').value  =window.perfilUsuario.num_doc
 }
+*/
+window.abrirPerfil = function () {
+  const modalEl = document.getElementById('perfilModal')
+
+  if (!modalEl) {
+    console.error('❌ perfilModal no existe en el DOM')
+    return
+  }
+
+  if (typeof bootstrap === 'undefined') {
+    console.error('❌ Bootstrap JS no está cargado')
+    return
+  }
+
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl)
+  modal.show()
+
+  if (!window.perfilUsuario) return
+
+  document.getElementById('perfilNombre').value  = window.perfilUsuario.nombre_completo
+  document.getElementById('perfilCargo').value   = window.perfilUsuario.cargo
+  document.getElementById('perfilTipoDoc').value = window.perfilUsuario.tipo_doc
+  document.getElementById('perfilNumDoc').value  = window.perfilUsuario.num_doc
+}
+
 
 //--- Cambiar contraseña ---
 window.cambiarPassword = async function () {
@@ -191,6 +217,7 @@ window.togglePassword = function (inputId, btn) {
 
 
 // Esto garantiza que el DOM exista, el loader esté visible y Supabase valide sesión
-document.addEventListener('DOMContentLoaded', () => {
-  protegerRuta()
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadLayout()      // ⬅️ primero layout + modal
+  await protegerRuta()    // ⬅️ luego lógica de sesión
 })

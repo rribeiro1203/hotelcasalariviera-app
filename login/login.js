@@ -1,5 +1,7 @@
 // 🔹 Función de login
-window.login = async function () {
+async function login(event) {
+  event.preventDefault(); // ⛔ evita recarga de página
+
   const numDoc = document.getElementById('numDoc').value.trim();
   const password = document.getElementById('password').value.trim();
   const errorDiv = document.getElementById('error');
@@ -43,6 +45,24 @@ window.login = async function () {
 
   // 🚀 Redirigir al dashboard
   window.location.href = '../index.html';
+}
+
+//--- Mostrar / ocultar contraseña ---
+window.togglePassword = function (inputId, btn) {
+  const input = document.getElementById(inputId)
+  const icon = btn.querySelector('i')
+
+  if (!input) return
+
+  if (input.type === 'password') {
+    input.type = 'text'
+    icon.classList.remove('bi-eye')
+    icon.classList.add('bi-eye-slash')
+  } else {
+    input.type = 'password'
+    icon.classList.remove('bi-eye-slash')
+    icon.classList.add('bi-eye')
+  }
 }
 
 /*

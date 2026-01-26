@@ -1,0 +1,83 @@
+<div class="modal fade" id="perfilModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Mi perfil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <!-- Tabs -->
+                <ul class="nav nav-tabs mb-3">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-datos">
+                        Datos
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-seguridad">
+                        Seguridad
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!-- 🔹 TAB DATOS -->
+                    <div class="tab-pane fade show active pt-3 pb-5" id="tab-datos">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="perfilNombre" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Cargo</label>
+                                <input type="text" class="form-control" id="perfilCargo" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de documento</label>
+                                <input type="text" class="form-control" id="perfilTipoDoc" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Número de documento</label>
+                                <input type="text" class="form-control" id="perfilNumDoc" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 🔹 TAB SEGURIDAD -->
+                    <div class="tab-pane fade" id="tab-seguridad">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Nueva contraseña</label>
+                                <div class="position-relative">
+                                    <input type="password" class="form-control" id="newPassword">
+                                    <button type="button" class="btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-2"
+                                            onclick="togglePassword('newPassword', this)">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Confirmar contraseña</label>
+                                <div class="position-relative">
+                                    <input type="password" class="form-control" id="confirmPassword">
+                                    <button type="button" class="btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-2"
+                                            onclick="togglePassword('confirmPassword', this)">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 text-end pt-1">
+                                <button class="btn btn-primary" onclick="cambiarPassword()"> Cambiar contraseña </button>
+                            </div>
+                            <div class="col-12">
+                                <small id="passwordMsg" class="text-danger d-none"></small>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
