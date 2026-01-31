@@ -1,5 +1,6 @@
 body {
     overflow-x: hidden;
+    overscroll-behavior: none;
 }
 /* Bloquea scroll del body cuando el sidebar menu está abierto */
 body.sidebar-open {
@@ -45,19 +46,16 @@ body.sidebar-open {
 /******* Sidebar *******/
 .sidebar {
     width: 280px;
-    height: calc(100vh - 56px);
+    height: 100vh;
     position: fixed;
-    top: 56px; /* altura navbar */
+    top: 0;
     left: 0;
     background-color: #212529;
     padding-top: 1rem;
     z-index: 1050;          /* 🔑 CLAVE PARA TRAERLO ARRIBA DEL CONTENIDO */
     display: flex;          /* 👈 CLAVE PARA EL USER PROFILE */
     flex-direction: column; /* 👈 CLAVE PARA EL USER PROFILE */
-    /* 🔑 CLAVE PARA HACER SCROLL */
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;       /* 🔑 CLAVE PARA DEJAR SCROLL AL MENU SOLAMENTE */
 }
 .sidebar-logo-img {
   max-width: 180px;
@@ -69,6 +67,7 @@ body.sidebar-open {
   /* Menú scrolleable */
   overflow-y: auto;
   padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
 }
 .sidebar-menu a:hover {
     background-color: #d8e0f4;
@@ -116,6 +115,8 @@ body.sidebar-open {
     /* Perfil siempre visible */
     flex-shrink: 0;     /* 🔑 */
     background-color: #212529;
+    border-top: 1px solid rgba(0,0,0,.1);
+    padding-top: .75rem;
 }
 .sidebar-user a {
     padding: 0;
@@ -208,6 +209,24 @@ body.sidebar-open {
     height: calc(100vh - 56px);
     overflow-y: auto;
     transition: margin-left 0.3s ease;
+}
+/* Desktop: NO navbar */
+@media (min-width: 992px) {
+    .content {
+        padding-left: 50px;
+        margin-top: 0;
+        height: 100vh;
+    }
+    .sidebar {
+        background: #0b1220;
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+    }
+}
+/* Overlay oscuro del sidebar solo exista en móvil */
+@media (min-width: 992px) {
+    .sidebar-open::before {
+        display: none;
+    }
 }
 
 /* Room Cards */

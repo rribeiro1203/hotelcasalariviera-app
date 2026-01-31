@@ -116,20 +116,6 @@ document.addEventListener("click", function (e) {
 });
 
 //--- Abrir modal + cargar datos ---
-/*
-window.abrirPerfil = function () {
-  const modal = new bootstrap.Modal(document.getElementById('perfilModal'))
-  modal.show()
-
-  if (!window.perfilUsuario) return
-
-  // Pintar datos
-  document.getElementById('perfilNombre').value  = window.perfilUsuario.nombre_completo
-  document.getElementById('perfilCargo').value   = window.perfilUsuario.cargo
-  document.getElementById('perfilTipoDoc').value = window.perfilUsuario.tipo_doc
-  document.getElementById('perfilNumDoc').value  =window.perfilUsuario.num_doc
-}
-*/
 window.abrirPerfil = function () {
   const modalEl = document.getElementById('perfilModal')
 
