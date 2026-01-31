@@ -46,10 +46,10 @@ body.sidebar-open {
 /******* Sidebar *******/
 .sidebar {
     width: 280px;
-    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
     background-color: #212529;
     padding-top: 1rem;
     z-index: 1050;          /* 🔑 CLAVE PARA TRAERLO ARRIBA DEL CONTENIDO */
@@ -66,7 +66,7 @@ body.sidebar-open {
   flex-grow: 1;
   /* Menú scrolleable */
   overflow-y: auto;
-  padding-bottom: 0.5rem;
+  min-height: 0;                     /* 🔑 CLAVE para que flex funcione bien con overflow */
   -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
 }
 .sidebar-menu a:hover {
@@ -114,9 +114,11 @@ body.sidebar-open {
 .sidebar-user {
     /* Perfil siempre visible */
     flex-shrink: 0;     /* 🔑 */
+    position: sticky;
+    bottom: env(safe-area-inset-bottom);
     background-color: #212529;
     border-top: 1px solid rgba(0,0,0,.1);
-    padding-top: .75rem;
+    padding: 0.75rem 1rem;
 }
 .sidebar-user a {
     padding: 0;
@@ -189,6 +191,12 @@ body.sidebar-open {
     .sidebar-open .sidebar {
         left: 0;
     }
+    .sidebar-menu{
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    }
+    .content {
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    }
 }
 @media (min-width: 992px) {
     .content {
@@ -209,6 +217,7 @@ body.sidebar-open {
     height: calc(100vh - 56px);
     overflow-y: auto;
     transition: margin-left 0.3s ease;
+    -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
 }
 /* Desktop: NO navbar */
 @media (min-width: 992px) {
