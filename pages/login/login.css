@@ -1,0 +1,87 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, #212529, #343a40);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Card */
+.login-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Header */
+.login-title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.login-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+.login-logo {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 6px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #495057;
+}
+
+/* Button */
+.btn-login {
+  background-color: #212529;
+  border: none;
+}
+
+.btn-login:hover {
+  background-color: #343a40;
+}
+
+/* Error message */
+.login-error {
+  display: none;
+  font-size: 0.85rem;
+  color: #dc3545;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* Footer */
+.login-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: #adb5bd;
+}
+
+/* Button toggle password */
+button[onclick^="togglePassword"] {
+  cursor: pointer;
+}

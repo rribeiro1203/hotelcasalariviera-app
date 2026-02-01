@@ -57,6 +57,17 @@ body.sidebar-open {
     flex-direction: column; /* 👈 CLAVE PARA EL USER PROFILE */
     overflow: hidden;       /* 🔑 CLAVE PARA DEJAR SCROLL AL MENU SOLAMENTE */
 }
+.nav-link {
+  cursor: pointer;          /* Para evitar bugs en iPhone */
+}
+/* Cuando el menu está activo, anulamos la clase: link-body-emphasis */
+.nav-link.active {
+  color: var(--bs-nav-pills-link-active-color) !important;
+  background-color: var(--bs-nav-pills-link-active-bg);
+}
+.nav-link.link-body-emphasis:not(.active) {
+  color: var(--bs-body-color);
+}
 .sidebar-logo-img {
   max-width: 180px;
   width: 100%;
@@ -100,7 +111,7 @@ body.sidebar-open {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(158, 158, 158, 0.5); /* Color título sección sidebar menu */
+  color: rgba(118, 118, 118, 0.5); /* Color título sección sidebar menu */
   margin: 16px 20px 8px;
   pointer-events: none;
   user-select: none;
@@ -197,6 +208,10 @@ body.sidebar-open {
     .content {
         padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
     }
+    /* 📱 Móvil: shadow SOLO cuando el sidebar está abierto */
+    body.sidebar-open .sidebar {
+        box-shadow: 6px 0 20px rgba(0, 0, 0, 0.45);
+    }
 }
 @media (min-width: 992px) {
     .content {
@@ -228,7 +243,8 @@ body.sidebar-open {
     }
     .sidebar {
         background: #0b1220;
-        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+        /* Shadow fijo en desktop */
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
     }
 }
 /* Overlay oscuro del sidebar solo exista en móvil */

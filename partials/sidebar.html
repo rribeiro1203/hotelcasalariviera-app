@@ -12,7 +12,13 @@
         <ul class="nav nav-pills flex-column mb-auto"> 
             <div class="sidebar-section-title">HOTEL</div>
             <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-door-open me-2"></i> Habitaciones       </a> 
+                <a role="button" class="nav-link link-body-emphasis active" aria-current="page" data-page="rooms"
+                    onclick="
+                        loadPage('rooms');
+                        setActiveMenu('rooms');
+                        document.body.classList.remove('sidebar-open');
+                    "><i class="bi bi-door-open me-2"></i> Habitaciones 
+                </a>
             </li> 
             <li> 
                 <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-calendar-check me-2"></i>    Reservas           </a>
@@ -45,13 +51,22 @@
             </li>
             <div class="sidebar-section-title">GERENCIA</div>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-people me-2"></i>            Empleados          </a> 
-            </li>
-            <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-shield-lock me-2"></i>       Roles & Accesos    </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-clipboard-data me-2"></i>    Auditoría          </a> 
             </li>
             <li> 
                 <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-graph-up me-2"></i>          Reportes           </a> 
+            </li>
+            <li> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-people me-2"></i>            Empleados          </a> 
+            </li>
+            <li> 
+                <a role="button" class="nav-link link-body-emphasis" data-page="roles"
+                    onclick="
+                        loadPage('roles');
+                        setActiveMenu('roles');
+                        document.body.classList.remove('sidebar-open');
+                    "><i class="bi bi-shield-lock me-2"></i> Roles & Accesos    
+                </a>
             </li>
         </ul> 
     </div>

@@ -32,165 +32,9 @@
     <div id="navbar-container"></div>
     <!-- 🔹 SIDEBAR -->
     <div id="sidebar-container"></div>
-
-    <!-- 🔹 CONTENIDO -->
-    <main class="content">
-      <h2 class="mb-4">Habitaciones</h2>
-
-      <!-- HABITACIONES DEL PRIMER PISO -->
-      <h5 class="mb-4">Primer piso</h5>
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-        <!-- UNA HABITACIÓN -->
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(101)">
-            <div class="card-body text-center">
-              <div class="room-number">101</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(102)">
-            <div class="card-body text-center">
-              <div class="room-number">102</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(103)">
-            <div class="card-body text-center">
-              <div class="room-number">103</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(104)">
-            <div class="card-body text-center">
-              <div class="room-number">104</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(105)">
-            <div class="card-body text-center">
-              <div class="room-number">105</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(106)">
-            <div class="card-body text-center">
-              <div class="room-number">106</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(107)">
-            <div class="card-body text-center">
-              <div class="room-number">107</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(108)">
-            <div class="card-body text-center">
-              <div class="room-number">108</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(109)">
-            <div class="card-body text-center">
-              <div class="room-number">109</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <!-- HABITACIONES DEL SEGUNDO PISO -->
-      <h5 class="mb-4">Segundo piso</h5>
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(201)">
-            <div class="card-body text-center">
-              <div class="room-number">201</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(202)">
-            <div class="card-body text-center">
-              <div class="room-number">202</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(203)">
-            <div class="card-body text-center">
-              <div class="room-number">203</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(204)">
-            <div class="card-body text-center">
-              <div class="room-number">204</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(205)">
-            <div class="card-body text-center">
-              <div class="room-number">205</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(206)">
-            <div class="card-body text-center">
-              <div class="room-number">206</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(207)">
-            <div class="card-body text-center">
-              <div class="room-number">207</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-free" onclick="openRoom(208)">
-            <div class="card-body text-center">
-              <div class="room-number">208</div>
-              <small class="text-muted">Disponible</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card room-card room-occupied" onclick="openRoom(209)">
-            <div class="card-body text-center">
-              <div class="room-number">209</div>
-              <small class="text-muted">Ocupada</small>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- 🔹 CONTENIDO DINÁMICO -->
+    <main class="content" id="appContentArea">
+      <!-- aquí se inyecta el contenido -->
     </main> 
   </div>
 
@@ -203,7 +47,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
   <!-- Javascript -->
-   <script src="js/layout.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/router.js"></script>
   <script src="js/scripts.js"></script>
 
 </body>

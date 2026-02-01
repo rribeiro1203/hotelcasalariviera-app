@@ -11,7 +11,7 @@ window.protegerRuta = async function () {
     await window.supabaseClient.auth.getSession()
 
   if (error || !session) {
-    window.location.href = 'login/login.html'
+    window.location.href = 'pages/login/login.html'
     return
   }
 
@@ -35,7 +35,7 @@ window.cargarPerfilSidebar = async function () {
   const { data: { user } } = await window.supabaseClient.auth.getUser()
 
    if (!user) {
-    window.location.replace('login/login.html')
+    window.location.replace('pages/login/login.html')
     return
   }
 
@@ -88,7 +88,7 @@ window.logout = async function () {
   localStorage.removeItem('user')
 
   // Redirigir al login
-  window.location.replace('login/login.html')
+  window.location.replace('pages/login/login.html')
 }
 
 //--- Interacciones de la interfaz ---
