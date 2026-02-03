@@ -1,3 +1,5 @@
+import { supabaseClient } from '../../js/supabase.js';
+
 // 🔹 Función de login
 async function login(event) {
   event.preventDefault(); // ⛔ evita recarga de página
@@ -15,7 +17,7 @@ async function login(event) {
   }
 
   // 🔐 Auth
-  const { data, error } = await window.supabaseClient.auth.signInWithPassword({
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
     // Como los empleados entraran con su número de documento, pero supabase
     // necesita un email, creamos un email ficticio con el número de documento
     email: `${numDoc}@hotel.local`,
@@ -28,9 +30,9 @@ async function login(event) {
     return;
   }
 
-  // 📄 Datos del empleado
+   // 📄 Datos del empleado
   const { data: empleado, error: empError } =
-  await window.supabaseClient
+  await supabaseClient
     .from('empleados')
     .select('*')
     .eq('id', data.user.id)
@@ -64,6 +66,8 @@ window.togglePassword = function (inputId, btn) {
     icon.classList.add('bi-eye')
   }
 }
+
+window.login = login;   // 👈 CLAVE para que el HTML puede llamarr a la función onsubmit en el form
 
 /*
 Debug en la consola:

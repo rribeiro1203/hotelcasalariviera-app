@@ -4,21 +4,22 @@ const routes = {
 };
 
 //--- Cargar contenido de la página
-function loadPage(page) {
+window.loadPage = function (page) {
   const container = document.getElementById('appContentArea');
 
   fetch(routes[page])
     .then(res => res.text())
     .then(html => {
       container.innerHTML = html;
+      setActiveMenu(page);
     })
     .catch(() => {
       container.innerHTML = '<p>Error cargando la página</p>';
     });
-}
+};
 
 //--- Función para manejar el estado activo del menu
-function setActiveMenu(page) {
+window.setActiveMenu = function (page) {
   document.querySelectorAll('.nav-link').forEach(link => {
     link.classList.remove('active');
   });
@@ -32,8 +33,15 @@ function setActiveMenu(page) {
   }
 }
 
-//--- Cuando se entra a index.html → se ve Habitaciones
+//--- Página inicial: cuando se entra a index.html → se ve Habitaciones
 document.addEventListener('DOMContentLoaded', () => {
-  loadPage('rooms');
-  setActiveMenu('rooms');
+  window.loadPage('rooms');
+});
+//--- Manejo de clicks en el menú ---
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('[data-page]');
+  if (!link) return;
+
+  const page = link.dataset.page;
+  window.loadPage(page);
 });

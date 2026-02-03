@@ -92,8 +92,18 @@ window.logout = async function () {
 }
 
 //--- Interacciones de la interfaz ---
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.room-card')
+  if (!card) return
+
+  const roomNumber = card.dataset.room
+  if (!roomNumber) return
+
+  openRoom(roomNumber)
+})
+
 function openRoom(roomNumber) {
-    alert('Abrir todo el detalle de la habitación ' + roomNumber);
+  alert('Abrir todo el detalle de la habitación ' + roomNumber)
 }
 
 function toggleSidebar() {

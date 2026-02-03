@@ -1,3 +1,8 @@
+/******* 🌐 Global Variables *******/
+:root {
+  --env-banner-height: 15px;
+}
+
 body {
     overflow-x: hidden;
     overscroll-behavior: none;
@@ -6,6 +11,45 @@ body {
 body.sidebar-open {
     overflow: hidden;
     touch-action: none;
+}
+
+/******* 🌐 Banner de entorno *******/
+.env-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--env-banner-height);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 5px;
+    z-index: 3000;
+    padding: 4px;
+    color: #fff;
+}
+.env-dev {
+  background: rgba(220, 53, 69, 0.7);
+  backdrop-filter: blur(6px);
+}
+.env-test {
+  background: rgba(255, 193, 7, 0.7);
+  color: #000;
+  backdrop-filter: blur(6px);
+}
+/* Ajusta el contenido para no quedar oculto tras el banner */
+body.has-env-banner {
+  padding-top: var(--env-banner-height); /* misma altura del banner */
+}
+#appContent {
+  transition: margin-top 0.2s ease; /* transición suave */
+}
+body.has-env-banner .sidebar {
+  top: var(--env-banner-height); /* misma altura del banner */
+  height: calc(100vh - var(--env-banner-height));
+}
+body.has-env-banner .navbar {
+  top: var(--env-banner-height); /* misma altura del banner */
 }
 
 /******* 🔄 Loader *******/
@@ -56,6 +100,7 @@ body.sidebar-open {
     display: flex;          /* 👈 CLAVE PARA EL USER PROFILE */
     flex-direction: column; /* 👈 CLAVE PARA EL USER PROFILE */
     overflow: hidden;       /* 🔑 CLAVE PARA DEJAR SCROLL AL MENU SOLAMENTE */
+    transition: top 0.2s ease, height 0.2s ease;
 }
 .nav-link {
   cursor: pointer;          /* Para evitar bugs en iPhone */
@@ -99,11 +144,14 @@ body.sidebar-open {
 .sidebar-open::before {
     content: "";
     position: fixed;
-    top: 56px;
+    top: calc(56px + var(--env-banner-height));
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.4);
+    height: calc(100vh - 56px - var(--env-banner-height));
+    background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.55)
+    );
     z-index: 1040;
 }
 .sidebar-section-title {
