@@ -127,13 +127,23 @@ document.addEventListener("click", function (e) {
 
 //--- Abrir modal + cargar datos ---
 window.abrirPerfil = function () {
+  // 📱 Si está abierto el sidebar (mobile), lo cerramos primero
+  if (document.body.classList.contains('sidebar-open')) {
+    document.body.classList.remove('sidebar-open')
+
+    // ⏳ Esperar animación del sidebar antes de abrir modal
+    setTimeout(showPerfilModal, 250)
+  } else {
+    showPerfilModal()
+  }
+}
+function showPerfilModal() {
   const modalEl = document.getElementById('perfilModal')
 
   if (!modalEl) {
     console.error('❌ perfilModal no existe en el DOM')
     return
   }
-
   if (typeof bootstrap === 'undefined') {
     console.error('❌ Bootstrap JS no está cargado')
     return
@@ -149,7 +159,6 @@ window.abrirPerfil = function () {
   document.getElementById('perfilTipoDoc').value = window.perfilUsuario.tipo_doc
   document.getElementById('perfilNumDoc').value  = window.perfilUsuario.num_doc
 }
-
 
 //--- Cambiar contraseña ---
 window.cambiarPassword = async function () {

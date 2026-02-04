@@ -1,4 +1,6 @@
 html, body {
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
 
@@ -15,14 +17,44 @@ body {
   to { opacity: 1; }
 }
 
+/* Página de login */
+.login-page {
+  min-height: 100vh;
+}
+/* Fondo fullscreen */
+.login-bg {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: url('../../assets/login-bg.avif') center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Overlay oscuro */
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+/* Card tipo “glass” */
+.login-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 1rem;
+}
+
 /* Card */
 .login-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1rem;
   width: 100%;
   max-width: 380px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
 /* Header */
