@@ -8,40 +8,46 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="login.css">
 </head>
-<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+<body class="login-page">
 
-  <div class="card shadow" style="width: 360px;">
-    <form class="card-body" onsubmit="login(event)">
-      <div class="text-center mb-3">
-        <img
-          src="../../assets/logo_light.png"
-          alt="Hotel Casa La Riviera"
-          class="login-logo"
-        >
-      </div>
-      <!--<h4 class="text-center mb-4">Hotel Casa La Riviera</h4>-->
+  <div class="login-bg">
+    <div class="login-overlay"></div>
 
-      <div class="mb-3">
-        <label class="form-label">Número de documento</label>
-        <input type="text" id="numDoc" class="form-control">
-      </div>
+    <div class="login-container">
+      <div class="login-card card shadow-lg">
+        <form class="card-body" onsubmit="login(event)">
+          <div class="text-center mb-3">
+            <img
+              src="../../assets/logo_light.png"
+              alt="Hotel Casa La Riviera"
+              class="login-logo"
+            >
+          </div>
+          <!--<h4 class="text-center mb-4">Hotel Casa La Riviera</h4>-->
 
-      <div class="mb-3">
-        <label class="form-label">Contraseña</label>
-        <div class="position-relative">
-          <input type="password" id="password" class="form-control">
-          <button type="button" tabindex="-1" class="btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-2"
-                  onclick="togglePassword('password', this)">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+          <div class="mb-3">
+            <label class="form-label">Número de documento</label>
+            <input type="text" id="numDoc" class="form-control">
+          </div>
 
-      <div id="error" class="text-danger mt-3 text-center d-none">
-        Credenciales inválidas
+          <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <div class="position-relative">
+              <input type="password" id="password" class="form-control">
+              <button type="button" tabindex="-1" class="btn p-0 border-0 bg-transparent position-absolute end-0 top-50 translate-middle-y me-2"
+                      onclick="togglePassword('password', this)">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+
+          <div id="error" class="text-danger mt-3 text-center d-none">
+            Credenciales inválidas
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 
   <!-- Bootstrap -->

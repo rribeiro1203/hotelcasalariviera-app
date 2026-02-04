@@ -144,15 +144,21 @@ body.has-env-banner .navbar {
 .sidebar-open::before {
     content: "";
     position: fixed;
-    top: calc(56px + var(--env-banner-height));
     left: 0;
     width: 100vw;
-    height: calc(100vh - 56px - var(--env-banner-height));
     background: linear-gradient(
         rgba(0,0,0,0.45),
         rgba(0,0,0,0.55)
     );
     z-index: 1040;
+    /* Default (SIN banner – prod) */
+    top: 56px;
+    height: calc(100vh - 56px);
+}
+/* SOLO cuando hay banner (dev / test) */
+body.has-env-banner.sidebar-open::before {
+    top: calc(56px + var(--env-banner-height));
+    height: calc(100vh - 56px - var(--env-banner-height));
 }
 .sidebar-section-title {
   font-size: 0.7rem;
@@ -282,6 +288,7 @@ body.has-env-banner .navbar {
     transition: margin-left 0.3s ease;
     -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
 }
+
 /* Desktop: NO navbar */
 @media (min-width: 992px) {
     .content {

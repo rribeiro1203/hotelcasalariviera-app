@@ -2,6 +2,10 @@ import ENV from './env.js'
 
 // Muestra un banner en la parte superior indicando el entorno actual
 document.addEventListener('DOMContentLoaded', () => {
+  
+  // ❌ No mostrar banner en login
+  if (!document.body.hasAttribute('data-protected')) return;
+
   const banner = document.getElementById('env-banner')
   if (!banner) return
 
