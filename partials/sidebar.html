@@ -1,4 +1,4 @@
-<div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+<div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"> <!-- bg-body-tertiary: bg color de Bootstrap -->
     <!-- LOGO-->
     <div class="sidebar-logo text-center mb-3">
     <img
@@ -31,36 +31,42 @@
             </li> 
             <!--<hr class="text-secondary mx-3">-->
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-globe me-2"></i>             Extranjeros        </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-passport me-2"></i>          Extranjeros        </a> 
             </li>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-person-vcard me-2"></i>      Clientes           </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-people me-2"></i>            Clientes           </a> 
             </li>
             <li> 
                 <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-building me-2"></i>          Empresas           </a> 
             </li>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-airplane me-2"></i>          Expedia            </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-globe me-2"></i>             Expedia            </a> 
             </li>
             <div class="sidebar-section-title">MINIBAR</div>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-cup-straw me-2"></i>         Ingresos Minibar   </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-cash me-2"></i>              Ingresos Minibar   </a> 
             </li>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-receipt me-2"></i>           Gastos Minibar     </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-receipt-cutoff me-2"></i>    Gastos Minibar     </a> 
             </li> 
             <li> 
                 <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-box-seam me-2"></i>          Inventario Minibar </a> 
             </li>
             <div class="sidebar-section-title">GERENCIA</div>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-clipboard-data me-2"></i>    Auditoría          </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-search me-2"></i>            Auditoría          </a> 
             </li>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-graph-up me-2"></i>          Reportes           </a> 
+                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-bar-chart me-2"></i>          Reportes           </a> 
             </li>
             <li> 
-                <a href="#" class="nav-link link-body-emphasis" onclick="document.body.classList.remove('sidebar-open')"><i class="bi bi-people me-2"></i>            Empleados          </a> 
+                <a role="button" class="nav-link link-body-emphasis" data-page="employees"
+                    onclick="
+                        loadPage('employees');
+                        setActiveMenu('employees');
+                        document.body.classList.remove('sidebar-open');
+                    "><i class="bi bi-person-badge me-2"></i> Empleados    
+                </a>
             </li>
             <li> 
                 <a role="button" class="nav-link link-body-emphasis" data-page="roles"

@@ -1,0 +1,91 @@
+/* ===============================
+   PERMISSION ROW
+=================================*/
+
+.permission-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.permission-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* ===============================
+   PERMISSION NAME (icon + text)
+=================================*/
+
+.permission-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.permission-name i {
+  font-size: 14px;
+  color: #6c757d;
+  width: 18px;
+}
+
+/* ===============================
+   PERMISSION OPTIONS (radios)
+=================================*/
+
+.permission-options {
+  display: flex;
+  gap: 15px;
+}
+
+.permission-options .form-check {
+  margin-bottom: 0;
+}
+
+/* ===============================
+   SECTION TITLE
+=================================*/
+
+.permission-section-title {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #6c757d;
+}
+
+/* ===============================
+   ROLES LIST
+=================================*/
+
+#rolesList .list-group-item {
+  font-size: 0.9rem;
+}
+
+#rolesList i {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+#rolesList i:hover {
+  opacity: 1;
+}
+
+/* Cuando el rol está activo */
+#rolesList .list-group-item.active i {
+  color: #fff !important;
+}
+
+/* ===============================
+   TITLE
+=================================*/
+
+#roleTitle {
+  font-size: 1rem;
+}

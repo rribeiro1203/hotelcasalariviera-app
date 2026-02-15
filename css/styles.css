@@ -1,11 +1,25 @@
 /******* 🌐 Global Variables *******/
 :root {
+  --navbar-height: 56px; /* default mobile */
   --env-banner-height: 15px;
+}
+@media (min-width: 992px) {
+  :root {
+    --navbar-height: 10px; /* desktop */
+  }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
-    overflow-x: hidden;
-    overscroll-behavior: none;
+    display: flex;
+    flex-direction: column;
 }
 /* Bloquea scroll del body cuando el sidebar menu está abierto */
 body.sidebar-open {
@@ -37,16 +51,11 @@ body.sidebar-open {
   color: #000;
   backdrop-filter: blur(6px);
 }
-/* Ajusta el contenido para no quedar oculto tras el banner */
-body.has-env-banner {
-  padding-top: var(--env-banner-height); /* misma altura del banner */
-}
 #appContent {
   transition: margin-top 0.2s ease; /* transición suave */
 }
 body.has-env-banner .sidebar {
-  top: var(--env-banner-height); /* misma altura del banner */
-  height: calc(100vh - var(--env-banner-height));
+  top: var(--env-banner-height);
 }
 body.has-env-banner .navbar {
   top: var(--env-banner-height); /* misma altura del banner */
@@ -266,10 +275,8 @@ body.has-env-banner.sidebar-open::before {
     body.sidebar-open .sidebar {
         box-shadow: 6px 0 20px rgba(0, 0, 0, 0.45);
     }
-}
-@media (min-width: 992px) {
-    .content {
-        margin-left: 280px;
+    body.has-env-banner .content{
+        margin-top: calc(56px + var(--env-banner-height));
     }
 }
 /* Evita que se “coma” el perfil en pantallas muy bajas */
@@ -281,29 +288,34 @@ body.has-env-banner.sidebar-open::before {
 
 /******* Contenido *******/
 .content {
-    margin-top: 56px;
+    flex: 1;
+    overflow-y: auto;
     padding: 20px;
-    height: calc(100vh - 56px);
+    margin-top: var(--navbar-height);
+    min-height: 0;
     overflow-y: auto;
     transition: margin-left 0.3s ease;
-    -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* 🔥 Cuando hay banner */
+body.has-env-banner .content {
+    margin-top: calc(var(--navbar-height) + var(--env-banner-height));
 }
 
 /* Desktop: NO navbar */
 @media (min-width: 992px) {
     .content {
+        margin-left: 280px;
         padding-left: 50px;
         margin-top: 0;
-        height: 100vh;
     }
     .sidebar {
         background: #0b1220;
         /* Shadow fijo en desktop */
-        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0); /*ultimo parametro: 0.2 para adicionar sombra*/
     }
-}
-/* Overlay oscuro del sidebar solo exista en móvil */
-@media (min-width: 992px) {
+    /* Overlay oscuro del sidebar solo exista en móvil */
     .sidebar-open::before {
         display: none;
     }

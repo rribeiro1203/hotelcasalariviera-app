@@ -1,6 +1,9 @@
+import { initRolesPage } from '../pages/roles/roles.js';
+
 const routes = {
-  rooms: 'pages/rooms/rooms.html',
-  roles: 'pages/roles/roles.html'
+  rooms:      'pages/rooms/rooms.html',
+  employees:  'pages/employees/employees.html',
+  roles:      'pages/roles/roles.html'
 };
 
 //--- Cargar contenido de la página
@@ -12,6 +15,10 @@ window.loadPage = function (page) {
     .then(html => {
       container.innerHTML = html;
       setActiveMenu(page);
+      // Inicializa la página de roles y accesos
+      if (page === "roles") {
+        initRolesPage();
+      }
     })
     .catch(() => {
       container.innerHTML = '<p>Error cargando la página</p>';
